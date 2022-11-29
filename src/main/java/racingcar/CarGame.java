@@ -17,15 +17,6 @@ public class CarGame {
     }
 
     private void play() {
-        OutputView.string("실행 결과");
-        for (int i = 0; i < CARS.length; i++) {
-            if (CarGameController.decideMovement(CarGameController.generateRandomNumber())) {
-                CARS[i].move();
-            }
-            OutputView.result(CARS[i]);
-            if (i == CARS.length-1) {
-                OutputView.finalResult(CarGameController.analyzeWinner(CARS));
-            }
-        }
+        CarGameController.play(CARS);
     }
 }
