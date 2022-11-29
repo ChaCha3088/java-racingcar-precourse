@@ -1,7 +1,9 @@
 package racingcar;
 
+import java.util.List;
+
 public class CarGame {
-    private final String[] CARNAMES;
+    private final List<String> CARNAMES;
     private final int MOVECOUNTS;
     Car[] CARS;
 
@@ -11,13 +13,13 @@ public class CarGame {
     }
 
     public void start() {
-        CARS = new Car[CARNAMES.length];
-        for (int i = 0; i < CARNAMES.length; i++) {
-            CARS[i] = new Car(CARNAMES[i]);
+        CARS = new Car[CARNAMES.size()];
+        for (int i = 0; i < CARNAMES.size(); i++) {
+            CARS[i] = new Car(CARNAMES.get(i));
         }
     }
 
     public void play() {
-        CarGameController.play(CARS, MOVECOUNTS);
+        CarGameController.executeGame(CARS, MOVECOUNTS);
     }
 }
