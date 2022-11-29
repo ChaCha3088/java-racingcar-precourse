@@ -45,6 +45,7 @@ public class CarGameController {
     private int repeatInputMoveCounts(String inputMoveCounts) {
         while (true) {
             try {
+                OutputView.string("시도할 회수는 몇회인가요?");
                 return verifyMoveCounts(InputView.inputMoveCounts());
             }catch (NumberFormatException e) { OutputView.string("[ERROR] 시도 회수는 정수로 입력해야 합니다."); }
             catch (IllegalArgumentException e) { OutputView.string("[ERROR] 시도 회수는 1 이상의 수를 입력해야 합니다."); }
