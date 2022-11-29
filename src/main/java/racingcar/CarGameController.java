@@ -78,9 +78,17 @@ public class CarGameController {
     public static void play(Car[] cars, int MOVECOUNTS) {
         OutputView.string("실행 결과");
         for (int i = 0; i < MOVECOUNTS; i++) {
-            if (decideMovement(generateRandomNumber())) { cars[i].move(); }
-            OutputView.result(cars[i]);
+            repeatMoves(cars);
             if (i == MOVECOUNTS-1) { OutputView.finalResult(analyzeWinner(cars)); }
+        }
+    }
+
+    private static void repeatMoves(Car[] cars) {
+        for (int i=0; i < cars.length; i++) {
+            if (decideMovement(generateRandomNumber())) {
+                cars[i].move();
+            }
+            OutputView.result(cars[i]);
         }
     }
 }
