@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarGameController {
-    private int generateRandomNumber() {
+    public static int generateRandomNumber() {
         return camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
     }
 
-    private Boolean decideMovement(int randomNumber) {
+    public static Boolean decideMovement(int randomNumber) {
         if (randomNumber>= 4 & randomNumber<=9) {
             return true;
         }

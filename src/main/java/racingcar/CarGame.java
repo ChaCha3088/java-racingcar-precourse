@@ -5,7 +5,7 @@ public class CarGame {
     private final int MOVECOUNTS;
     Car[] CARS;
 
-    private CarGame(int moveCounts) {
+    private CarGame() {
         this.CARNAMES = CarGameController.repeatInputCarNames();
         this.MOVECOUNTS = CarGameController.repeatInputMoveCounts();
     }
@@ -13,6 +13,16 @@ public class CarGame {
     private void start() {
         for (int i = 0; i < CARNAMES.length; i++) {
             CARS[i] = new Car(CARNAMES[i]);
+        }
+    }
+
+    private void play() {
+        OutputView.string("실행 결과");
+        for (int i = 0; i < CARS.length; i++) {
+            if (CarGameController.decideMovement(CarGameController.generateRandomNumber())) {
+                CARS[i].move();
+            }
+            OutputView.result(CARS[i]);
         }
     }
 }
