@@ -23,6 +23,9 @@ public class CarGame {
                 CARS[i].move();
             }
             OutputView.result(CARS[i]);
+            if (i == CARS.length-1) {
+                OutputView.finalResult(CarGameController.analyzeWinner(CARS));
+            }
         }
     }
 }

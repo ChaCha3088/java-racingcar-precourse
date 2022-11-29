@@ -1,7 +1,12 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import net.bytebuddy.dynamic.scaffold.MethodGraph.Linked;
 
 public class CarGameController {
     public static int generateRandomNumber() {
@@ -51,5 +56,24 @@ public class CarGameController {
             catch (IllegalArgumentException e) { OutputView.string("[ERROR] 시도 회수는 1 이상의 수를 입력해야 합니다."); }
 
         }
+    }
+
+    public static List<String> analyzeWinner(Car[] cars) {
+        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+        for (Car car : cars) {
+            result.put(car.getName(), car.getPosition());
+        }
+        return findMaxKeys(result);
+    }
+
+    private static List<String> findMaxKeys(LinkedHashMap<String, Integer> result) {
+        List<String> resultList = new ArrayList<>();
+        int maxValue = Collections.max(result.values());
+        for (Map.Entry<String, Integer> m : result.entrySet()) {
+            if(m.getValue() == maxValue) {
+                resultList.add(m.getKey());
+            }
+        }
+        return resultList;
     }
 }
