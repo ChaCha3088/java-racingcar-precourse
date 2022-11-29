@@ -3,9 +3,9 @@ package racingcar;
 import java.util.List;
 
 public class CarGameController {
-    public static void executeGame(Car[] cars, int MOVECOUNTS) {
+    public static void executeGame(List<Car> cars, Integer MOVECOUNTS) {
         OutputView.string("실행 결과");
-        for (int i = 0; i < MOVECOUNTS; i++) {
+        for (Integer i = 0; i < MOVECOUNTS; i++) {
             repeatMoves(cars);
             isFinalMove(i, cars, MOVECOUNTS);
         }
@@ -21,7 +21,7 @@ public class CarGameController {
         }
     }
 
-    public static int repeatInputMoveCounts() {
+    public static Integer repeatInputMoveCounts() {
         while (true) {
             try {
                 return CarGameVerification.verifyMoveCounts(inputMoveCounts());
@@ -35,21 +35,21 @@ public class CarGameController {
         return InputView.inputCarNames();
     }
 
-    public static int inputMoveCounts() {
+    public static Integer inputMoveCounts() {
         OutputView.string("시도할 회수는 몇회인가요?");
         return InputView.inputMoveCounts();
     }
 
-    private static void repeatMoves(Car[] cars) {
-        for (int i=0; i < cars.length; i++) {
+    private static void repeatMoves(List<Car> cars) {
+        for (Integer i=0; i < cars.size(); i++) {
             if (CarGameAnalyze.analyzeMoveCounts(InputView.generateRandomNumber())) {
-                cars[i].move();
+                cars.get(i).move();
             }
-            OutputView.result(cars[i]);
+            OutputView.result(cars.get(i));
         }
     }
 
-    private static void isFinalMove(int i, Car[] cars, int MOVECOUNTS) {
+    private static void isFinalMove(Integer i, List<Car> cars, Integer MOVECOUNTS) {
         if (CarGameAnalyze.analyzeFinalMove(i, MOVECOUNTS)) {
             OutputView.finalResult(CarGameAnalyze.analyzeWinner(cars));
         }

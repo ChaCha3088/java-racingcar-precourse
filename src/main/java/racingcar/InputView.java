@@ -11,11 +11,11 @@ public class InputView {
         ));
     }
 
-    public static int inputMoveCounts() {
+    public static Integer inputMoveCounts() {
         return Integer.parseInt(camp.nextstep.edu.missionutils.Console.readLine());
     }
 
-    public static int generateRandomNumber() {
+    public static Integer generateRandomNumber() {
         return camp.nextstep.edu.missionutils.Randoms.pickNumberInRange(0, 9);
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CarGameAnalyze {
-    public static List<String> analyzeWinner(Car[] cars) {
+    public static List<String> analyzeWinner(List<Car> cars) {
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         for (Car car : cars) {
             result.put(car.getName(), car.getPosition());
@@ -15,14 +15,14 @@ public class CarGameAnalyze {
         return findMaxKeys(result);
     }
 
-    public static Boolean analyzeFinalMove(int i, int MOVECOUNTS) {
+    public static Boolean analyzeFinalMove(Integer i, Integer MOVECOUNTS) {
         if (i == MOVECOUNTS-1) {
             return true;
         }
         return false;
     }
 
-    public static Boolean analyzeMoveCounts(int randomNumber) {
+    public static Boolean analyzeMoveCounts(Integer randomNumber) {
         if (randomNumber>= 4 & randomNumber<=9) {
             return true;
         }
@@ -31,7 +31,7 @@ public class CarGameAnalyze {
 
     private static List<String> findMaxKeys(LinkedHashMap<String, Integer> result) {
         List<String> resultList = new ArrayList<>();
-        int maxValue = Collections.max(result.values());
+        Integer maxValue = Collections.max(result.values());
         for (Map.Entry<String, Integer> m : result.entrySet()) {
             if (m.getValue() == maxValue) {
                 resultList.add(m.getKey());

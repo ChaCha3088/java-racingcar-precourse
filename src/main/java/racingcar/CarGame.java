@@ -1,11 +1,12 @@
 package racingcar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarGame {
     private final List<String> CARNAMES;
-    private final int MOVECOUNTS;
-    Car[] CARS;
+    private final Integer MOVECOUNTS;
+    List<Car> CARS = new ArrayList<>();
 
     public CarGame() {
         this.CARNAMES = CarGameController.repeatInputCarNames();
@@ -13,9 +14,8 @@ public class CarGame {
     }
 
     public void start() {
-        CARS = new Car[CARNAMES.size()];
-        for (int i = 0; i < CARNAMES.size(); i++) {
-            CARS[i] = new Car(CARNAMES.get(i));
+        for (Integer i = 0; i < CARNAMES.size(); i++) {
+            CARS.add(new Car(CARNAMES.get(i)));
         }
     }
 
