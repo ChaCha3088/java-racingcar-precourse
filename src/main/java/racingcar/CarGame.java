@@ -5,18 +5,19 @@ public class CarGame {
     private final int MOVECOUNTS;
     Car[] CARS;
 
-    private CarGame() {
+    public CarGame() {
         this.CARNAMES = CarGameController.repeatInputCarNames();
         this.MOVECOUNTS = CarGameController.repeatInputMoveCounts();
     }
 
-    private void start() {
+    public void start() {
+        CARS = new Car[CARNAMES.length];
         for (int i = 0; i < CARNAMES.length; i++) {
             CARS[i] = new Car(CARNAMES[i]);
         }
     }
 
-    private void play() {
-        CarGameController.play(CARS);
+    public void play() {
+        CarGameController.play(CARS, MOVECOUNTS);
     }
 }

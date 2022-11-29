@@ -2,11 +2,9 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import net.bytebuddy.dynamic.scaffold.MethodGraph.Linked;
 
 public class CarGameController {
     public static int generateRandomNumber() {
@@ -77,12 +75,12 @@ public class CarGameController {
         return resultList;
     }
 
-    public static void play(Car[] cars) {
+    public static void play(Car[] cars, int MOVECOUNTS) {
         OutputView.string("실행 결과");
-        for (int i = 0; i < cars.length; i++) {
-            if (CarGameController.decideMovement(CarGameController.generateRandomNumber())) { cars[i].move(); }
+        for (int i = 0; i < MOVECOUNTS; i++) {
+            if (decideMovement(generateRandomNumber())) { cars[i].move(); }
             OutputView.result(cars[i]);
-            if (i == cars.length-1) { OutputView.finalResult(CarGameController.analyzeWinner(cars)); }
+            if (i == MOVECOUNTS-1) { OutputView.finalResult(analyzeWinner(cars)); }
         }
     }
 }
