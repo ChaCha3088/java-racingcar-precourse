@@ -15,7 +15,7 @@ public class CarGameController {
         return false;
     }
 
-    private String[] verifyLetterCounts(String[] inputLetters, int counts) {
+    private static String[] verifyLetterCounts(String[] inputLetters, int counts) {
         for (String str: inputLetters) {
             if (str.length() > counts || str.length() == 0) {
                 throw new IllegalArgumentException("[ERROR] 이름은 5자 이하거나 1자 이상이어야합니다.");
@@ -24,14 +24,14 @@ public class CarGameController {
         return inputLetters;
     }
 
-    private int verifyMoveCounts(int moveCounts) {
+    private static int verifyMoveCounts(int moveCounts) {
         if (moveCounts < 1) {
             throw new IllegalArgumentException("[ERROR] 시도 회수는 1 이상의 수를 입력해야 합니다.");
         }
         return moveCounts;
     }
 
-    private String[] repeatInputCarNames(String[] inputCarNames) {
+    public static String[] repeatInputCarNames() {
         while (true) {
             try {
                 OutputView.string("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -42,7 +42,7 @@ public class CarGameController {
         }
     }
 
-    private int repeatInputMoveCounts(String inputMoveCounts) {
+    public static int repeatInputMoveCounts() {
         while (true) {
             try {
                 OutputView.string("시도할 회수는 몇회인가요?");
