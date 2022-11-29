@@ -40,12 +40,62 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 그_부분부터_입력을_다시_받는다_테스트1() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,chacha", "pobi,woni,jun", "5");
+                    assertThat(output()).contains("pobi : -----", "woni : ----", "jun : -----", "최종 우승자 : pobi, jun");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
+    void 그_부분부터_입력을_다시_받는다_테스트2() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,jun", "false", "5");
+                    assertThat(output()).contains("pobi : -----", "woni : ----", "jun : -----", "최종 우승자 : pobi, jun");
+                },
+                MOVING_FORWARD, STOP, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD,
+                MOVING_FORWARD, MOVING_FORWARD, MOVING_FORWARD
+        );
+    }
+
+    @Test
     void 이름에_대한_예외_처리() {
         assertSimpleTest(
             () -> {
                 runException("pobi,javaji");
                 assertThat(output()).contains(ERROR_MESSAGE);
             }
+        );
+    }
+
+    @Test
+    void 시도_회수에_대한_예외_처리1() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,cha", "-5");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
+        );
+    }
+
+    @Test
+    void 시도_회수에_대한_예외_처리2() {
+        assertSimpleTest(
+                () -> {
+                    runException("pobi,cha", "hello");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                }
         );
     }
 
