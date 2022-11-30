@@ -12,7 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarGameControllerTest {
-    @DisplayName("사용자가 유효하지 않은 값을 입력 했을 때 반복하는 테스트")
+    @DisplayName("사용자가 유효하지 않은 값을 입력 했을 때 그 부분부터 입력을 다시 받는 테스트")
     @Test
     void repeatInputCarNamesTest1() {
         String[] input = {"123456", "123,456"};
@@ -40,7 +40,7 @@ class CarGameControllerTest {
         assertThat(captor.toString().trim()).contains("[ERROR]");
     }
 
-    @DisplayName("사용자가 유효하지 않은 값을 입력 했을 때 반복하는 테스트")
+    @DisplayName("사용자가 유효하지 않은 값을 입력 했을 때 그 부분부터 입력을 다시 받는 테스트")
     @Test
     void repeatInputMoveCountsTest1() {
         String[] input = {"0", "what", "5"};
