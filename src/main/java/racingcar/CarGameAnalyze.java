@@ -22,7 +22,7 @@ public class CarGameAnalyze {
         return false;
     }
 
-    public static Boolean analyzeMoveCounts(Integer randomNumber) {
+    public static Boolean analyzeMovement(Integer randomNumber) {
         if (randomNumber>= 4 & randomNumber<=9) {
             return true;
         }

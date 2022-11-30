@@ -22,4 +22,6 @@ public class Car {
     public Integer getPosition() {
         return this.position;
     }
+
+    public void setPosition(Integer position) { this.position = position; }
 }

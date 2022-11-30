@@ -42,7 +42,7 @@ public class CarGameController {
 
     private static void repeatMoves(List<Car> cars) {
         for (Integer i=0; i < cars.size(); i++) {
-            if (CarGameAnalyze.analyzeMoveCounts(InputView.generateRandomNumber())) {
+            if (CarGameAnalyze.analyzeMovement(InputView.generateRandomNumber())) {
                 cars.get(i).move();
             }
             OutputView.result(cars.get(i));
