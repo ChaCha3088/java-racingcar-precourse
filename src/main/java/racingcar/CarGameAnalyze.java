@@ -12,7 +12,7 @@ public class CarGameAnalyze {
         for (Car car : cars) {
             result.put(car.getName(), car.getPosition());
         }
-        return findMaxKeys(result);
+        return findKeysWithMaxValues(result);
     }
 
     public static Boolean analyzeFinalMove(Integer i, Integer MOVECOUNTS) {
@@ -29,7 +29,7 @@ public class CarGameAnalyze {
         return false;
     }
 
-    private static List<String> findMaxKeys(LinkedHashMap<String, Integer> result) {
+    private static List<String> findKeysWithMaxValues(LinkedHashMap<String, Integer> result) {
         List<String> resultList = new ArrayList<>();
         Integer maxValue = Collections.max(result.values());
         for (Map.Entry<String, Integer> m : result.entrySet()) {
